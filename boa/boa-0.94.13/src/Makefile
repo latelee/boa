@@ -25,11 +25,13 @@ LIBS =
 CFLAGS = -g -O2 -pipe -Wall -I.
 
 # Change these if necessary
+# by Late Lee
+CROSS_COMPILE = 
 
 YACC = bison -y 
 LEX = lex 
-CC = gcc 
-CPP = gcc -E
+CC = $(CROSS_COMPILE)gcc 
+CPP = $(CROSS_COMPILE)gcc -E
 
 SOURCES = alias.c boa.c buffer.c cgi.c cgi_header.c config.c escape.c \
 	get.c hash.c ip.c log.c mmap_cache.c pipe.c queue.c read.c \
