@@ -207,12 +207,14 @@ static void drop_privs(void)
     if (getuid() == 0) {
         struct passwd *passwdbuf;
         passwdbuf = getpwuid(server_uid);
+        #if 0
         if (passwdbuf == NULL) {
             DIE("getpwuid");
         }
         if (initgroups(passwdbuf->pw_name, passwdbuf->pw_gid) == -1) {
             DIE("initgroups");
         }
+        #endif
         if (setgid(server_gid) == -1) {
             DIE("setgid");
         }
@@ -222,9 +224,11 @@ static void drop_privs(void)
         /* test for failed-but-return-was-successful setuid
          * http://www.securityportal.com/list-archive/bugtraq/2000/Jun/0101.html
          */
+        #if 0
         if (setuid(0) != -1) {
             DIE("icky Linux kernel bug!");
         }
+        #endif
     } else {
         if (server_gid || server_uid) {
             log_error_time();
