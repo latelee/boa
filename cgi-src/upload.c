@@ -21,8 +21,6 @@ int cgi_upload(int argc, char* argv[])
     int got = 0;
     int t = 0;
     int ret = 0;
-
-    cgiHeaderContentType("text/html");
     
     //取得html页面中file元素的值，应该是文件在客户机上的路径名
     if (cgiFormFileName("file", localFileName, sizeof(localFileName)) != cgiFormSuccess)

@@ -80,8 +80,31 @@ int execute(int argc, char *argv[])
     return 0;
 }
 
+void setHtmlHead(void)
+{
+    cgiHeaderContentType("text/html", "utf-8");
+
+    fprintf(cgiOut, "<html><head>\n");
+    fprintf(cgiOut, "<title>字符叠加器管理软件</title></head>\n");
+    fprintf(cgiOut, "<body>\n");
+}
+
+void setHtmlFoot(void)
+{
+    fprintf(cgiOut, "</body></html>\n");
+}
+
 int main(int argc, char *argv[])
 {
+    int ret = 0;
+
     cgiInitEnv();
-    return execute(argc, argv);
+
+    setHtmlHead();
+
+    ret = execute(argc, argv);
+
+    setHtmlFoot();
+
+    return ret;
 }
