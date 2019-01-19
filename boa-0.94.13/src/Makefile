@@ -32,6 +32,7 @@ YACC = bison -y
 LEX = lex 
 CC = $(CROSS_COMPILE)gcc 
 CPP = $(CROSS_COMPILE)gcc -E
+STRIP = $(CROSS_COMPILE)strip
 
 SOURCES = alias.c boa.c buffer.c cgi.c cgi_header.c config.c escape.c \
 	get.c hash.c ip.c log.c mmap_cache.c pipe.c queue.c read.c \
@@ -43,7 +44,7 @@ all:	boa boa_indexer
 
 boa:	$(OBJS)
 	$(CC) -o $@ $^ $(LDFLAGS) $(LIBS)
-	
+	$(STRIP) $@
 boa_indexer:	index_dir.o escape.o   
 	$(CC) -o $@ $^ $(LDFLAGS) $(LIBS)
 
