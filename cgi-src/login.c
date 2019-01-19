@@ -22,7 +22,7 @@ void setHtmlTitle(char* title)
     printf("%s\n", titlebuf);
 }
 
-int main()
+int cgi_login(int argc, char* argv[])
 {
     char *querystr = NULL;
     char name[16],pwd[16];
@@ -33,7 +33,7 @@ int main()
     querystr=getenv("QUERY_STRING");
     if(querystr==NULL)
     {
-        printf("<p>error, no input</p>");
+        printf("<p>error, no input</p>\n");
     }
     else
     {

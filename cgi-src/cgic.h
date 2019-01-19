@@ -228,5 +228,7 @@ cgiFormResultType cgiValueEscape(const char *s);
 	of error, cgiFormSuccess otherwise. */
 cgiFormResultType cgiValueEscapeData(const char *data, int len);
 
+int cgiInitEnv(void);
+
 #endif /* CGI_C */
 

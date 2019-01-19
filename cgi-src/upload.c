@@ -6,7 +6,7 @@
 
 #include"cgic.h"
 
-int cgiMain(void)
+int cgi_upload(int argc, char* argv[])
 {
     cgiFilePtr file;
 
